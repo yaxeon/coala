@@ -97,12 +97,6 @@ export default function Game({
     <div className="game">
       <div className="game__board-area">
         <div className="game__board-wrapper">
-          {phase === 'showing' && (
-            <div className="game__memorize-banner">
-              <span>MEMORIZE!</span>
-            </div>
-          )}
-
           <GameBoard
           boardTypes={boardTypes}
           boardVariants={boardVariants}
