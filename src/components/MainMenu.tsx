@@ -1,4 +1,4 @@
-import backImg from '@assets/back.png';
+import backImg from '@assets/back.webp';
 
 interface Props {
   bestScore: number;

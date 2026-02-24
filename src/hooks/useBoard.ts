@@ -6,8 +6,15 @@ export type CardType = 'koala' | 'tree';
 export type CardState = 'idle' | 'found' | 'tempTree' | 'tempFire';
 export type ClickResult = 'koala' | 'tree' | 'fire' | null;
 
+const VARIANTS = 4;
+
+function randomVariant(): number {
+  return Math.floor(Math.random() * VARIANTS) + 1;
+}
+
 export function useBoard() {
   const [boardTypes, setBoardTypes] = useState<CardType[]>([]);
+  const [boardVariants, setBoardVariants] = useState<number[]>([]);
   const [cardStates, setCardStates] = useState<CardState[]>([]);
   const typesRef = useRef<CardType[]>([]);
   const busyRef = useRef(new Set<number>());
@@ -22,9 +29,11 @@ export function useBoard() {
     for (let i = 0; i < koalaCount; i++) types.push('koala');
     for (let i = koalaCount; i < GRID_SIZE; i++) types.push('tree');
     const shuffled = shuffle(types);
+    const variants = shuffled.map(() => randomVariant());
 
     typesRef.current = shuffled;
     setBoardTypes(shuffled);
+    setBoardVariants(variants);
     setCardStates(Array(GRID_SIZE).fill('idle'));
   }, []);
 
@@ -80,5 +89,5 @@ export function useBoard() {
 
   useEffect(() => cleanup, [cleanup]);
 
-  return { boardTypes, cardStates, generate, handleClick, cleanup };
+  return { boardTypes, boardVariants, cardStates, generate, handleClick, cleanup };
 }

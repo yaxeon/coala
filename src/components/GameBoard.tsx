@@ -4,6 +4,7 @@ import type { CardType, CardState } from '../hooks/useBoard';
 
 interface Props {
   boardTypes: CardType[];
+  boardVariants: number[];
   cardStates: CardState[];
   showAll: boolean;
   isFlipping: boolean;
@@ -13,6 +14,7 @@ interface Props {
 
 export default function GameBoard({
   boardTypes,
+  boardVariants,
   cardStates,
   showAll,
   isFlipping,
@@ -28,6 +30,7 @@ export default function GameBoard({
           key={index}
           index={index}
           type={type}
+          variant={boardVariants[index]}
           state={cardStates[index]}
           showAll={showAll}
           isFlipping={isFlipping}

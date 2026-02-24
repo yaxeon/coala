@@ -420,14 +420,8 @@ img {
     0 0 20px rgba(45, 106, 79, 0.4);
 }
 
-.card--fire {
-  animation: shake 0.4s ease-out;
-}
-
 .card--fire .card__face--back {
-  box-shadow:
-    0 0 0 3px var(--color-danger),
-    0 0 20px rgba(230, 57, 70, 0.5);
+  animation: fireGlow 1.5s ease-out;
 }
 
 /* ===== Overlay ===== */
@@ -585,12 +579,11 @@ img {
   100% { transform: scale(1); }
 }
 
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+@keyframes fireGlow {
+  0% { box-shadow: 0 0 0 0 transparent; background: transparent; }
+  20% { box-shadow: 0 0 0 4px var(--color-danger), 0 0 24px rgba(230, 57, 70, 0.6); background: rgba(230, 57, 70, 0.15); }
+  50% { box-shadow: 0 0 0 4px var(--color-danger), 0 0 32px rgba(230, 57, 70, 0.5); background: rgba(230, 57, 70, 0.1); }
+  100% { box-shadow: 0 0 0 0 transparent; background: transparent; }
 }
 
 @keyframes pulse {

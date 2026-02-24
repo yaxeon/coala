@@ -35,7 +35,7 @@ export default function Game({
   onReset,
 }: Props) {
   const [phase, setPhase] = useState<Phase>('showing');
-  const { boardTypes, cardStates, generate, handleClick: boardClick } = useBoard();
+  const { boardTypes, boardVariants, cardStates, generate, handleClick: boardClick } = useBoard();
   const foundCountRef = useRef(0);
   const frozenRef = useRef(frozen);
   const timeLeftRef = useRef(0);
@@ -105,6 +105,7 @@ export default function Game({
 
           <GameBoard
           boardTypes={boardTypes}
+          boardVariants={boardVariants}
           cardStates={cardStates}
           showAll={phase === 'showing'}
           isFlipping={phase === 'flipping'}
